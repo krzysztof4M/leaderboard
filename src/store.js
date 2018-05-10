@@ -1,9 +1,7 @@
 import { createStore, compose } from 'redux'
 import rootReducer from './rootReducer'
 
-const initialState = {
-  data: []
-}
+const initialState = {}
 
 const enhancers = []
 

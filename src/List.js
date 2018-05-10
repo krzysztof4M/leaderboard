@@ -13,4 +13,4 @@ class List extends Component {
     }
 }
 
-export default connect(state=>({data: state.data}))(List)
+export default connect(state=>({data: state.main.data}))(List)
