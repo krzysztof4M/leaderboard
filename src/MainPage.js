@@ -1,18 +1,26 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
+import moment from 'moment'
 import Ranking from './Ranking'
-import { changeHighlightedPerson } from './actions'
+import { changeHighlightedPerson, changeFilter } from './actions'
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 class MainPage extends Component {
 
+    handleChange = (date) => {
+        this.props.changeFilter(moment(date))
+    }
+
     render(){
-        const { people, highlightedPerson, changeHighlightedPerson } = this.props
+        const { people, highlightedPerson, filterDate, changeHighlightedPerson } = this.props
         return (
             <React.Fragment>
-                <DatePicker />
+                <DatePicker
+                    selected={filterDate ? moment(filterDate) : null}
+                    onChange={this.handleChange}
+                />    
                 <Ranking people={people} changeHighlightedPerson={changeHighlightedPerson}/>
                 <HighlightedPersonContainer highlightedPerson={highlightedPerson}/>
             </React.Fragment>
@@ -22,10 +30,11 @@ class MainPage extends Component {
 
 export default connect(
     state=>({
-        people: state.main.data,
-        highlightedPerson: getHighlightedPerson(state.main.data, state.main.highlightedPersonId)
+        people: getFilteredPeople(state.main.data, state.main.filterDate),
+        highlightedPerson: getHighlightedPerson(state.main.data, state.main.highlightedPersonId),
+        filterDate: state.main.filterDate
     }),
-    { changeHighlightedPerson }
+    { changeHighlightedPerson, changeFilter }
 )(MainPage)
 
 const HighlightedPersonContainer = ({highlightedPerson}) => {
@@ -53,4 +62,8 @@ const HighlightedPerson = ({ firstName, lastName, date, points }) =>
 
 const getHighlightedPerson = (people, id) => {
     return people.find(obj => obj.id === id)
+}
+
+const getFilteredPeople = (people, filter) => {
+    return people.filter(obj => filter === null || moment(obj.date).isSame(filter))
 }

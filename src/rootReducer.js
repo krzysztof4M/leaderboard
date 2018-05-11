@@ -5,7 +5,7 @@ import uuidv4 from 'uuid/v4'
 const initialState = {
   data: JSON.parse(localStorage.getItem('leaderboardData')) || [],
   highlightedPersonId: '',
-  filterDate: ''
+  filterDate: null
 }
 
 const mainReducer = (state = initialState, action = []) => {
