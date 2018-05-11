@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Form from './Form'
+import { editPerson } from './actions'
 
 class Edit extends Component {
 
@@ -11,13 +12,15 @@ class Edit extends Component {
     render(){
         return (
             <div>
-                {
-                    this.props.match.params.personId
-                }
-                <Form initialValues={this.prepareInitialValues()}/>
+                <Form initialValues={this.props.person} submitFunc={this.props.editPerson}/>
             </div>
         )
     }
 }
 
-export default connect((state,{match}) => ({person: state.main.data.find(obj => obj.id === match.params.personId)}))(Edit)
+export default connect(
+    (state,{match}) => ({
+        person: state.main.data.find(obj => obj.id === match.params.personId)
+    }),
+    { editPerson }
+)(Edit)

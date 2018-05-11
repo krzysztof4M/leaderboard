@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Form from './Form'
+import { addPerson } from './actions'
 
-export default class Add extends Component {
+class Add extends Component {
 
     render(){
         return (
             <div>
-                <Form />
+                <Form submitFunc={this.props.addPerson}/>
             </div>
         )
     }
 }
+
+export default connect(null,{addPerson})(Add)

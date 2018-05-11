@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 class Form extends Component {
 
   submitForm = (data) => {
-    console.log('test')            
+    this.props.submitFunc(data)            
   }
 
   render() {

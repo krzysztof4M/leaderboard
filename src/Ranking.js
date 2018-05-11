@@ -1,11 +1,12 @@
 import React, { Component }  from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { deletePerson } from './actions'
 
-export default class Ranking extends Component {
-
-    
+class Ranking extends Component {
 
     render(){
-        const { people, changeHighlightedPerson } = this.props 
+        const { people, changeHighlightedPerson, deletePerson } = this.props 
         return (
             <div>
                 {
@@ -17,7 +18,8 @@ export default class Ranking extends Component {
                             lastName={lastName}
                             date={date}
                             points={points}
-                            changeHighlightedPerson={changeHighlightedPerson} 
+                            changeHighlightedPerson={changeHighlightedPerson}
+                            deletePerson={deletePerson}
                         />)
                 }
             </div>
@@ -25,10 +27,16 @@ export default class Ranking extends Component {
     }
 }
 
-const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPerson}) => {
+export default connect(null, { deletePerson })(Ranking)
+
+const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPerson, deletePerson}) => {
 
     const handleClick = () => {
         changeHighlightedPerson(id)
+    }
+
+    const handleDelete = () => {
+        deletePerson(id)
     }
 
     return (
@@ -44,6 +52,12 @@ const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPers
             </div>
             <div>
                 {points}
+            </div>
+            <div>
+                <Link to={`/edit/${id}`}>Edit</Link>
+            </div>
+            <div>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )
