@@ -2,7 +2,12 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 
 const initialState = {
-  data: [{id: '1', firstName: 'Jan', lastName: 'Kowalski', points: 30, date: 'wwwwwwww'}, {id: '2', firstName: 'Karol', lastName: 'Nowak', points: 25, date: 'wwwwwwww'}]
+  data: [
+    {id: '1', firstName: 'Jan', lastName: 'Kowalski', points: 30, date: 'wwwwwwww'},
+    {id: '2', firstName: 'Karol', lastName: 'Nowak', points: 25, date: 'wwwwwwww'},
+    {id: '3', firstName: 'Marian', lastName: 'Wójcik', points: 35, date: 'wwwwwwww'},
+    {id: '4', firstName: 'Kamil', lastName: 'Bednarz', points: 40, date: 'wwwwwwww'}
+  ]
 }
 
 const mainReducer = (state = initialState, action = []) => {

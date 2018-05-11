@@ -11,7 +11,7 @@ class Form extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting, invalid, submitSucceeded } = this.props
     return (
-      <form onSubmit={handleSubmit(this.submitForm)} className="admin-color-version">
+      <form onSubmit={handleSubmit(this.submitForm)} >
                 <Field
                   name="firstName"
                   component="input"
@@ -42,7 +42,7 @@ class Form extends Component {
                 />
             <div>
           </div>
-            <button type="submit" className="btn btn-dark-blue" disabled={pristine || submitting || invalid}>Submit</button>
+            <button type="submit" disabled={pristine || submitting || invalid}>Submit</button>
       </form>
     )
   }
