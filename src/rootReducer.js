@@ -3,12 +3,7 @@ import { reducer as formReducer } from 'redux-form'
 import uuidv4 from 'uuid/v4'
 
 const initialState = {
-  data: [
-    {id: '1', firstName: 'Jan', lastName: 'Kowalski', points: 30, date: 'wwwwwwww'},
-    {id: '2', firstName: 'Karol', lastName: 'Nowak', points: 25, date: 'wwwwwwww'},
-    {id: '3', firstName: 'Marian', lastName: 'Wójcik', points: 35, date: 'wwwwwwww'},
-    {id: '4', firstName: 'Kamil', lastName: 'Bednarz', points: 40, date: 'wwwwwwww'}
-  ],
+  data: JSON.parse(localStorage.getItem('leaderboardData')) || [],
   highlightedPersonId: '',
   filterDate: ''
 }

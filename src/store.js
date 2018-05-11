@@ -1,5 +1,6 @@
-import { createStore, compose } from 'redux'
+import { createStore, compose, applyMiddleware, } from 'redux'
 import rootReducer from './rootReducer'
+import { persistMiddleware } from './middlewares'
 
 const initialState = {}
 
@@ -14,6 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const composedEnhancers = compose(
+  applyMiddleware(persistMiddleware),
   ...enhancers
 )
 
