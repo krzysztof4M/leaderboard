@@ -5,29 +5,46 @@ export default class Ranking extends Component {
     
 
     render(){
-        const { people } = this.props 
+        const { people, changeHighlightedPerson } = this.props 
         return (
             <div>
                 {
-                    people.sort((a,b)=>{return b.points-a.points}).map( ({id, firstName, lastName, points, date}) => <PersonRow key={id} firstName={firstName} lastName={lastName} date={date} points={points} />)
+                    people.sort((a,b)=>{return b.points-a.points}).map( ({id, firstName, lastName, points, date}) =>
+                        <PersonRow
+                            key={id}
+                            id={id}
+                            firstName={firstName}
+                            lastName={lastName}
+                            date={date}
+                            points={points}
+                            changeHighlightedPerson={changeHighlightedPerson} 
+                        />)
                 }
             </div>
         )
     }
 }
 
-const PersonRow = ({firstName, lastName, date, points}) =>
-    <div>
-        <div>
-            {firstName}
+const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPerson}) => {
+
+    const handleClick = () => {
+        changeHighlightedPerson(id)
+    }
+
+    return (
+        <div onClick={handleClick}>
+            <div>
+                {firstName}
+            </div>
+            <div>
+                {lastName}
+            </div>
+            <div>
+                {date}
+            </div>
+            <div>
+                {points}
+            </div>
         </div>
-        <div>
-            {lastName}
-        </div>
-        <div>
-            {date}
-        </div>
-        <div>
-            {points}
-        </div>
-    </div>
+    )
+}
