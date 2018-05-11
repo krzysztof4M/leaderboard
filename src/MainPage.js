@@ -1,7 +1,10 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
+import DatePicker from 'react-datepicker'
 import Ranking from './Ranking'
 import { changeHighlightedPerson } from './actions'
+
+import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 class MainPage extends Component {
 
@@ -9,6 +12,7 @@ class MainPage extends Component {
         const { people, highlightedPerson, changeHighlightedPerson } = this.props
         return (
             <React.Fragment>
+                <DatePicker />
                 <Ranking people={people} changeHighlightedPerson={changeHighlightedPerson}/>
                 <HighlightedPersonContainer highlightedPerson={highlightedPerson}/>
             </React.Fragment>
