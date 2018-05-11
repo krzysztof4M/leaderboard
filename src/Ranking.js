@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 import { deletePerson } from './actions'
 
 class Ranking extends Component {
@@ -31,16 +32,12 @@ export default connect(null, { deletePerson })(Ranking)
 
 const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPerson, deletePerson}) => {
 
-    const handleClick = () => {
-        changeHighlightedPerson(id)
-    }
-
     const handleDelete = () => {
         deletePerson(id)
     }
 
     return (
-        <div onClick={handleClick}>
+        <div>
             <div>
                 {firstName}
             </div>
@@ -48,7 +45,7 @@ const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPers
                 {lastName}
             </div>
             <div>
-                {date}
+                {moment(date).format("YYYY/MM/DD")}
             </div>
             <div>
                 {points}

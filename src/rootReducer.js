@@ -4,14 +4,11 @@ import uuidv4 from 'uuid/v4'
 
 const initialState = {
   data: JSON.parse(localStorage.getItem('leaderboardData')) || [],
-  highlightedPersonId: '',
   filterDate: null
 }
 
 const mainReducer = (state = initialState, action = []) => {
   switch (action.type) {
-    case 'CHANGE_HIGHLIGHTED_PERSON':
-      return {...state, highlightedPersonId: action.newHighlightedPersonId }
     case 'ADD_PERSON':
       return {...state, data: [...state.data, {id: uuidv4(), ...action.newPerson}] }
     case 'EDIT_PERSON':

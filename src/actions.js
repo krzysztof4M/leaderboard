@@ -1,10 +1,3 @@
-export function changeHighlightedPerson(id) {
-  return {
-    type: 'CHANGE_HIGHLIGHTED_PERSON',
-    newHighlightedPersonId: id
-  }
-}
-
 export function addPerson(newPerson) {
   return {
     type: 'ADD_PERSON',
