@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 import Ranking from './Ranking'
 import { changeFilter } from './actions'
@@ -13,6 +14,7 @@ class MainPage extends Component {
         const { people, filterDate, changeFilter } = this.props
         return (
             <React.Fragment>
+                <Link to={'/add'}>Add new person</Link>
                 <DatePicker
                     selected={filterDate ? moment(filterDate) : null}
                     onChange={changeFilter}

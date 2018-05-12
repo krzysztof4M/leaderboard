@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Form from './Form'
 import { editPerson } from './actions'
 
 class Edit extends Component {
 
-    prepareInitialValues = () => {
-        return this.props.person
-    }
-
     render(){
         return (
             <div>
-                <Form initialValues={this.props.person} submitFunc={this.props.editPerson}/>
+                {
+                    this.props.person ?
+                    <Form initialValues={this.props.person} submitFunc={this.props.editPerson}/>
+                    :
+                    <NoPersonPlaceholder />
+                }
+                
             </div>
         )
     }
@@ -24,3 +27,9 @@ export default connect(
     }),
     { editPerson }
 )(Edit)
+
+const NoPersonPlaceholder = () =>
+    <div>
+        There is no person to edit. Sorry!
+        <Link to={'/'}>Back</Link>
+    </div>

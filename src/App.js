@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.css'
 import {
   Route,
-  Link,
   Switch,
   Redirect
 } from 'react-router-dom'
@@ -15,7 +14,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Link to={'/add'}>Add new person</Link>
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/add" component={Add} />

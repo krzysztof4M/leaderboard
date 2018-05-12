@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import DatePicker from 'react-datepicker'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
@@ -51,6 +52,7 @@ class Form extends Component {
             <div>
           </div>
             <button type="submit" disabled={pristine || submitting || invalid}>Submit</button>
+            <Link to={'/'}>Cancel</Link>
       </form>
     )
   }
