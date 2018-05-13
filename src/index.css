@@ -93,7 +93,12 @@ body {
     text-transform: uppercase;
 }
 
-.button:hover {
+.button:disabled {
+  border: 2px solid #c0c0c0;
+  color: #c0c0c0;
+}
+
+.button:hover:enabled {
     color: white;
     background-color: #0099CC;
 }
@@ -137,4 +142,14 @@ body {
     text-decoration: underline;
     text-transform: uppercase;
 }
+
+.placeholder {
+  text-align: center;
+}
+
+.placeholder a {
+  display: block;
+  margin: 10px auto;
+}
+
 

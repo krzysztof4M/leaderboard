@@ -1,30 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Form from './Form'
 import { editPerson } from '../redux/actions'
 
-class Edit extends Component {
-
-    render(){
-        return (
-            <div>
-                {
-                    this.props.person ?
-                    <Form
-                        initialValues={this.props.person}
-                        submitFunc={this.props.editPerson}
-                        redirectTo={this.props.history.push}
-                        title="Edit person data"
-                    />
-                    :
-                    <NoPersonPlaceholder />
-                }
-                
-            </div>
-        )
-    }
-}
+const Edit = ({person, editPerson, history: {push}}) => 
+  <div>
+    {
+      person ?
+      <Form
+          initialValues={person}
+          submitFunc={editPerson}
+          redirectTo={push}
+          title="Edit person data"
+      />
+      :
+      <NoPersonPlaceholder />
+    } 
+  </div>
 
 export default connect(
     (state,{match}) => ({
@@ -33,8 +27,14 @@ export default connect(
     { editPerson }
 )(Edit)
 
+Edit.propTypes = {
+  person: PropTypes.object.isRequired,
+  editPerson: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+}
+
 const NoPersonPlaceholder = () =>
-    <div>
-        There is no person to edit. Sorry!
-        <Link to={'/'}>Back</Link>
-    </div>
+  <div className="placeholder">
+    <span>There is no person to edit. Sorry!</span>
+    <Link to={'/'} className="button">Back</Link>
+  </div>

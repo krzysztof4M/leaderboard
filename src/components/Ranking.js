@@ -1,38 +1,36 @@
-import React, { Component }  from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { deletePerson } from '../redux/actions'
 
-class Ranking extends Component {
-
-  render(){
-    const { people, changeHighlightedPerson, deletePerson } = this.props 
-    return (
-      <div>
-        <Header />
-        {
-          people.sort((a,b)=>{return b.points-a.points}).map( ({id, firstName, lastName, points, date}) =>
-            <PersonRow
-                key={id}
-                id={id}
-                firstName={firstName}
-                lastName={lastName}
-                date={date}
-                points={points}
-                changeHighlightedPerson={changeHighlightedPerson}
-                deletePerson={deletePerson}
-            />
-          )
-        }
-      </div>
-    )
-  }
-}
+const Ranking = ({ people, deletePerson }) =>
+  <div>
+    <Header />
+    {
+      people.sort((a,b)=>{return b.points-a.points}).map( ({id, firstName, lastName, points, date}) =>
+        <PersonRow
+          key={id}
+          id={id}
+          firstName={firstName}
+          lastName={lastName}
+          date={moment(date)}
+          points={points}
+          deletePerson={deletePerson}
+        />
+      )
+    }
+  </div>
 
 export default connect(null, { deletePerson })(Ranking)
 
-const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPerson, deletePerson}) => {
+Ranking.propTypes = {
+  people: PropTypes.array.isRequired,
+  deletePerson: PropTypes.func.isRequired
+}
+
+const PersonRow = ({id, firstName, lastName, date, points, deletePerson}) => {
 
   const handleDelete = () => {
       deletePerson(id)
@@ -44,7 +42,7 @@ const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPers
         <span>{`${firstName} ${lastName}`}</span>
       </div>
       <div className="date">
-        <span>{moment(date).format("YYYY/MM/DD")}</span>
+        <span>{date.format("YYYY/MM/DD")}</span>
       </div>
       <div className="points">
         <span>{points}</span>
@@ -57,6 +55,15 @@ const PersonRow = ({id, firstName, lastName, date, points, changeHighlightedPers
       </div>
     </div>
   )
+}
+
+PersonRow.propTypes = {
+  id: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  date: PropTypes.object.isRequired,
+  points: PropTypes.number.isRequired,
+  deletePerson: PropTypes.func.isRequired
 }
 
 const Header = () => 
