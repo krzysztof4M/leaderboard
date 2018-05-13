@@ -14,10 +14,12 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/add" component={Add} />
           <Route exact path="/edit/:personId" component={Edit} />
           <Redirect to="/" />
+        </Switch>
       </div>
     );
   }

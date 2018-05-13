@@ -3,11 +3,11 @@ import { reducer as formReducer } from 'redux-form'
 import uuidv4 from 'uuid/v4'
 
 const initialState = {
-  data: JSON.parse(localStorage.getItem('leaderboardData')) || [],
+  data: [],
   filterDate: null
 }
 
-const mainReducer = (state = initialState, action = []) => {
+export const mainReducer = (state = initialState, action = []) => {
   switch (action.type) {
     case 'ADD_PERSON':
       return {...state, data: [...state.data, {id: uuidv4(), ...action.newPerson}] }

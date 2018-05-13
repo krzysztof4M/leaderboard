@@ -2,7 +2,12 @@ import { createStore, compose, applyMiddleware, } from 'redux'
 import rootReducer from './rootReducer'
 import { persistMiddleware } from './middlewares'
 
-const initialState = {}
+const initialState = {
+  main: {
+    data: JSON.parse(localStorage.getItem('leaderboardData')) || [],
+    filterDate: null
+  },
+}
 
 const enhancers = []
 
