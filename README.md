@@ -3,7 +3,7 @@ Simple app built with react, redux, react-router and simple middleware for persi
 
 ## Demo
 
-[DEMO](http://localhost:3000/)
+[DEMO](https://leaderboard-kg.surge.sh/)
 
 ## Getting started
 
