@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Form from './Form'
-import { addPerson } from './actions'
+import { addPerson } from '../redux/actions'
 
 class Add extends Component {
 

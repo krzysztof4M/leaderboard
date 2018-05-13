@@ -2,7 +2,7 @@ import React, { Component }  from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-import { deletePerson } from './actions'
+import { deletePerson } from '../redux/actions'
 
 class Ranking extends Component {
 

@@ -4,11 +4,15 @@ import DatePicker from 'react-datepicker'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import Ranking from './Ranking'
-import { changeFilter } from './actions'
+import { changeFilter } from '../redux/actions'
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 class MainPage extends Component {
+
+    handleClearFilter = () => {
+        this.props.changeFilter(null)
+    }
 
     render(){
         const { people, filterDate, changeFilter } = this.props
@@ -18,7 +22,8 @@ class MainPage extends Component {
                 <DatePicker
                     selected={filterDate ? moment(filterDate) : null}
                     onChange={changeFilter}
-                />    
+                />
+                <button onClick={this.handleClearFilter}>Clear</button>    
                 <Ranking people={people} />
             </React.Fragment>
         )
