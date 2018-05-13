@@ -1,5 +1,6 @@
 import * as actions from './actions'
 import { mainReducer } from './rootReducer'
+import { persistMiddleware } from './middlewares'
 
 //testing actions
 
@@ -150,5 +151,26 @@ describe('main reducer', () => {
         deletedPersonId: '1'
       }
     )).toEqual({data: [secondPerson], filterDate: null})
+  })
+})
+
+// test middleware
+describe('persistMiddleware', ()=>{
+  it('doesnt fire localStorage setItem funtion',()=>{
+    const fakeStore = {getState: ()=>({main:{data: []}})}
+    const fakeNext = jest.fn()
+    const action = {type: 'SET_FILTER_DATE', filterDate: null}
+
+    persistMiddleware(fakeStore)(fakeNext)(action)
+    expect(localStorage.setItem).not.toHaveBeenCalled()
+  })
+
+  it('fire localStorage setItem funtion',()=>{
+    const fakeStore = {getState: ()=>({main:{data: []}})}
+    const fakeNext = jest.fn()
+    const action = {type: 'DELETE_PERSON', deletedPersonId: '1'}
+
+    persistMiddleware(fakeStore)(fakeNext)(action)
+    expect(localStorage.setItem).toHaveBeenCalled()
   })
 })

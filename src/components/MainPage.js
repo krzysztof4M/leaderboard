@@ -12,7 +12,7 @@ const getFilteredPeople = (people, filter) => {
   return people.filter(obj => filter === null || moment(obj.date).isSame(filter))
 }
 
-const MainPage = ({people, filterDate, changeFilter}) => {
+export const MainPage = ({people, filterDate, changeFilter}) => {
 
   const handleClearFilter = () => {
     changeFilter(null)
