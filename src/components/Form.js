@@ -7,7 +7,7 @@ import moment from 'moment'
 
 const required = value => (value ? undefined : 'Required')
 
-const Form = ({submitFunc, redirectTo, handleSubmit, pristine, invalid, title}) => {
+const Form = ({submitFunc, redirectTo, handleSubmit, pristine, invalid, title }) => {
 
   const submitForm = (data) => {
     data.points = parseInt(data.points)

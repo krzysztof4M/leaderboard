@@ -28,7 +28,7 @@ export default connect(
 )(Edit)
 
 Edit.propTypes = {
-  person: PropTypes.object.isRequired,
+  person: PropTypes.object,
   editPerson: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 }

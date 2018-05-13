@@ -1,6 +1,5 @@
 import * as actions from './actions'
 import { mainReducer } from './rootReducer'
-import { peristMiddleware } from './middlewares'
 
 //testing actions
 

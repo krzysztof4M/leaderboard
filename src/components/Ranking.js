@@ -30,7 +30,7 @@ Ranking.propTypes = {
   deletePerson: PropTypes.func.isRequired
 }
 
-const PersonRow = ({id, firstName, lastName, date, points, deletePerson}) => {
+export const PersonRow = ({id, firstName, lastName, date, points, deletePerson}) => {
 
   const handleDelete = () => {
       deletePerson(id)
