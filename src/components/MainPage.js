@@ -8,6 +8,10 @@ import { changeFilter } from '../redux/actions'
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
+const getFilteredPeople = (people, filter) => {
+    return people.filter(obj => filter === null || moment(obj.date).isSame(filter))
+}
+
 class MainPage extends Component {
 
     handleClearFilter = () => {
@@ -18,12 +22,11 @@ class MainPage extends Component {
         const { people, filterDate, changeFilter } = this.props
         return (
             <React.Fragment>
-                <Link to={'/add'}>Add new person</Link>
-                <DatePicker
+                <TopBar
                     selected={filterDate ? moment(filterDate) : null}
-                    onChange={changeFilter}
+                    changeFilter={changeFilter}
+                    handleClearFilter={this.handleClearFilter}
                 />
-                <button onClick={this.handleClearFilter}>Clear</button>    
                 <Ranking people={people} />
             </React.Fragment>
         )
@@ -38,6 +41,17 @@ export default connect(
     { changeFilter }
 )(MainPage)
 
-const getFilteredPeople = (people, filter) => {
-    return people.filter(obj => filter === null || moment(obj.date).isSame(filter))
-}
+const TopBar = ({selected, changeFilter, handleClearFilter}) => 
+    <div className="topBar">
+        <Link to={'/add'} className="button">Add new person</Link>
+        <div className="datePicker">
+            <DatePicker
+                dateFormat="YYYY/MM/DD"
+                selected={selected}
+                onChange={changeFilter}
+                placeholderText="Choose date to filter results"
+                className="filter"
+            />
+            <a onClick={handleClearFilter} className="clearBtn">Clear</a>
+        </div>
+    </div>

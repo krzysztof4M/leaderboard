@@ -1,5 +1,140 @@
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  padding: 30px;
+  background-color: #E9EAED;
+  color: #6B6F7A;
+  font-family: "Lato", sans-serif;
 }
+
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+
+.topBar .button {
+    width: auto;
+}
+
+.datePicker {
+    display: flex;
+    align-items: center;
+}
+
+.datePicker .clearBtn {
+    cursor: pointer;
+    margin-left: 10px;
+    color: #0099CC; 
+    text-decoration: underline;
+}
+
+.datePicker .filter {
+    border: 2px solid #0099CC;
+    border-radius: 6px;
+    line-height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.datePicker .filter::placeholder {
+    color: #0099CC; 
+}
+
+.rankingRow {
+    border: 2px #0099CC solid;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin: 10px 20px;
+}
+
+.name {
+    width: 40%;
+    text-align: center;
+}
+
+.date {
+    width: 15%;
+    text-align: center;
+}
+
+.points {
+    width: 15%;
+    text-align: center;
+}
+
+.edit {
+    width: 15%;
+    text-align: center;
+}
+
+.delete {
+    width: 15%;
+    text-align: center;
+}
+
+.button {
+    box-sizing: border-box;
+    background: transparent;
+    border: 2px solid #0099CC;
+    border-radius: 6px;
+    color: #000000;
+    cursor: pointer;
+    padding: 0 14px;
+    line-height: 28px;
+    font-size: 14px;
+    margin: 4px 0px;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    color: white;
+    background-color: #0099CC;
+}
+
+.header {
+    color: white;
+    background-color: #0099CC;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form {
+    width: 300px;
+}
+
+.form h2 {
+    color: #0099CC;
+}
+
+.form input {
+    border: 2px solid #0099CC;
+    border-radius: 6px;
+    display: block;
+    line-height: 28px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formButtons .cancelBtn {
+    cursor: pointer;
+    color: #0099CC; 
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+

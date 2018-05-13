@@ -8,7 +8,11 @@ class Add extends Component {
     render(){
         return (
             <div>
-                <Form submitFunc={this.props.addPerson}/>
+                <Form 
+                    submitFunc={this.props.addPerson}
+                    redirectTo={this.props.history.push}
+                    title="Add person data"
+                />
             </div>
         )
     }

@@ -11,7 +11,12 @@ class Edit extends Component {
             <div>
                 {
                     this.props.person ?
-                    <Form initialValues={this.props.person} submitFunc={this.props.editPerson}/>
+                    <Form
+                        initialValues={this.props.person}
+                        submitFunc={this.props.editPerson}
+                        redirectTo={this.props.history.push}
+                        title="Edit person data"
+                    />
                     :
                     <NoPersonPlaceholder />
                 }

@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
-import {
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Add from './Add'
 import Edit from './Edit'
 import MainPage from './MainPage'
